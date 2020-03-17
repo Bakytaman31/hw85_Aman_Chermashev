@@ -3,13 +3,17 @@ import {
     Card, CardText, CardBody,
     CardTitle, Button
 } from 'reactstrap';
-import MusicThumbnail from "../MusicThumbnail/MusicThumbnail";
+import MusicThumbnail from "../../MusicThumbnail/MusicThumbnail";
 import {Link} from "react-router-dom";
 
+const styles = {
+    width: '40%',
+    margin: '10px auto'
+};
 
 const AlbumsCard = (props) => {
     return (
-        <div>
+        <div style={styles}>
             <Card>
                 <MusicThumbnail image={props.image}/>
                 <CardBody>

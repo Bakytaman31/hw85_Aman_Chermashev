@@ -5,10 +5,10 @@ const rootPath = __dirname;
 module.exports = {
   rootPath,
   uploadPath: path.join(rootPath, 'public', 'uploads'),
-  database: {
-    host     : 'localhost',
-    user     : 'user',
-    password : '1qaz@WSX29',
-    database : 'study'
-  },
+  database: 'mongodb://localhost/music',
+  databaseOptions: {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true
+  }
 };

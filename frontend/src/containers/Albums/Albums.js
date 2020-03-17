@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from "react-redux";
-import AlbumsCard from "../../components/AlbumsCard/AlbumsCard";
+import AlbumsCard from "../../components/Cards/AlbumsCard/AlbumsCard";
 import {getAlbums} from "../../store/actions/albumsActions";
 
 class Albums extends Component {

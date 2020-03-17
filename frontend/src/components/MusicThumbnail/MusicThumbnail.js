@@ -7,7 +7,8 @@ import {api} from "../../constants";
 const styles = {
     width: '100px',
     height: '100px',
-    marginRight: '10px'
+    marginRight: 'auto',
+    marginLeft: 'auto'
 };
 
 const MusicThumbnail = props => {

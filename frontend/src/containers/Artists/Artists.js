@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from "react-redux";
 import {getArtists} from "../../store/actions/artistsActions";
-import ArtistCard from "../../components/ArtistsCard/ArtistCard";
+import ArtistCard from "../../components/Cards/ArtistsCard/ArtistCard";
 
 class Artists extends Component {
 

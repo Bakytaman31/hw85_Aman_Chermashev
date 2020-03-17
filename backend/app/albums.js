@@ -24,7 +24,7 @@ const router = express.Router();
 
 
 router.get('/', async (req, res) => {
-    const albums = await Album.find({artist: req.query.artist}, {"year": 1})
+    const albums = await Album.find({artist: req.query.artist}, {"name": 1, image: 1, "year": 1})
         .sort({"year": -1})
         .populate('artist');
     res.send(albums);

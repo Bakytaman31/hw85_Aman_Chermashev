@@ -4,9 +4,14 @@ import {
     CardTitle
 } from 'reactstrap';
 
+const styles = {
+    width: '40%',
+    margin: '10px auto'
+};
+
 const TrackCard = (props) => {
     return (
-        <div>
+        <div style={styles} onClick={() => props.onClick(props.id)}>
             <Card>
                 <CardBody>
                     <CardTitle>{props.number}. {props.name}</CardTitle>
