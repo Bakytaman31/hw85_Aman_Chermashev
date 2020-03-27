@@ -19,7 +19,8 @@ router.post('/', [bodyParser.json(), auth], async (req, res) => {
 
 router.get('/', [bodyParser.json(), auth], async (req, res) => {
     const user = req.user;
-    const trackHistory = await TrackHistory.find({userId: user._id})
+    const trackHistory = await TrackHistory.find({userId: user._id}, {"userId": 1, "track": 1, "date": 1, "_id":1})
+        .sort({"date": -1})
         .populate({path: 'track', populate: {
             path: 'album', populate: {
                 path: 'artist'

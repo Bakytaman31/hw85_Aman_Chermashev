@@ -7,12 +7,15 @@ const User = require('../models/User');
 const router = express.Router();
 
 router.post('/', bodyParser.json(),async (req, res) => {
-    const user = new User(req.body);
-
     try {
-        user.generateToken();
-        await user.save();
-        return res.send(user);
+        const userData = {
+            username: req.body.username,
+            password: req.body. password
+        };
+        const user = new User(userData);
+            user.generateToken();
+            await user.save();
+            return res.send(user);
     } catch (error) {
         return res.status(400).send(error);
     }
@@ -36,6 +39,27 @@ router.post('/sessions', bodyParser.json(),async (req, res) => {
     await user.save();
 
     return res.send(user);
+});
+
+router.delete('/sessions', async (req, res) => {
+    const success = {message: 'Success'};
+
+    try {
+        const token = req.get('Authorization').split(' ')[1];
+
+        if (!token) return res.send(success);
+
+        const user = await User.findOne({token});
+
+        if (!user) return res.send(success);
+
+        user.generateToken();
+        await user.save();
+
+        return res.send(success);
+    } catch (e) {
+        return res.send(success);
+    }
 });
 
 module.exports = router;

@@ -9,6 +9,8 @@ export const LOGIN_USER_REQUEST = 'LOGIN_USER_REQUEST';
 export const LOGIN_USER_SUCCESS = 'LOGIN_USER_SUCCESS';
 export const LOGIN_USER_FAILURE = 'LOGIN_USER_FAILURE';
 
+export const LOGOUT_USER_SUCCESS = 'LOGOUT_USER_SUCCESS';
+
 export const registerUserRequest = () => ({type: REGISTER_USER_REQUEST});
 export const registerUserSuccess = () => ({type: REGISTER_USER_SUCCESS});
 export const registerUserFailure = error => ({type: REGISTER_USER_FAILURE, error});
@@ -16,6 +18,8 @@ export const registerUserFailure = error => ({type: REGISTER_USER_FAILURE, error
 export const loginUserRequest = () => ({type: LOGIN_USER_REQUEST});
 export const loginUserSuccess = user => ({type: LOGIN_USER_SUCCESS, user});
 export const loginUserFailure = error => ({type: LOGIN_USER_FAILURE, error});
+
+export const logoutUserSuccess = () => ({type: LOGOUT_USER_SUCCESS});
 
 export const registerUser = userData => {
     return async dispatch => {
@@ -44,5 +48,18 @@ export const loginUser = userData => {
         } catch (error) {
             dispatch(loginUserFailure(error.response.data));
         }
+    }
+};
+
+
+export const logoutUser = () => {
+    return async (dispatch, getState) => {
+        const token = getState().users.user.token;
+        const headers = {'Authorization': 'Token ' + token};
+
+        await axiosApp.delete('/users/sessions', {headers});
+
+        dispatch(logoutUserSuccess());
+        dispatch(push('/'));
     }
 };

@@ -8,8 +8,16 @@ const ArtistSchema = new Schema({
         required: true,
     },
     image: String,
-    info: String
+    info: String,
+    published: {
+        type: Boolean,
+        default: false
+    }
 });
+
+ArtistSchema.methods.publishArtist = function () {
+    this.published = true;
+};
 
 const Artist = mongoose.model('Artist', ArtistSchema);
 

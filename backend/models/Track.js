@@ -13,8 +13,16 @@ const TrackSchema = new Schema({
         required: true
     },
     duration: String,
-    number: Number
+    number: Number,
+    published: {
+        type: Boolean,
+        default: false
+    }
 });
+
+TrackSchema.methods.publishTrack = function () {
+    this.published = true;
+};
 
 const Track = mongoose.model('Track', TrackSchema);
 
