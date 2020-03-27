@@ -58,8 +58,7 @@ export const logoutUser = () => {
         const headers = {'Authorization': 'Token ' + token};
 
         await axiosApp.delete('/users/sessions', {headers});
-
-        dispatch(logoutUserSuccess());
         dispatch(push('/'));
+        dispatch(logoutUserSuccess());
     }
 };

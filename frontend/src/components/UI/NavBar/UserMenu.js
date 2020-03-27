@@ -31,6 +31,24 @@ const UserMenu = ({user, logout}) => {
             <DropdownMenu right>
                 <DropdownItem>
                     <NavItem>
+                        <NavLink tag={RouterNavLink} to="/addArtist" exact>Add Artist</NavLink>
+                    </NavItem>
+                </DropdownItem>
+                <DropdownItem divider />
+                <DropdownItem>
+                    <NavItem>
+                        <NavLink tag={RouterNavLink} to="/addAlbum" exact>Add Album</NavLink>
+                    </NavItem>
+                </DropdownItem>
+                <DropdownItem divider />
+                <DropdownItem>
+                    <NavItem>
+                        <NavLink tag={RouterNavLink} to="/addTrack" exact>Add Track</NavLink>
+                    </NavItem>
+                </DropdownItem>
+                <DropdownItem divider />
+                <DropdownItem>
+                    <NavItem>
                         <NavLink tag={RouterNavLink} to="/track_history" exact>Track History</NavLink>
                     </NavItem>
                 </DropdownItem>
