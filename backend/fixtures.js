@@ -29,11 +29,11 @@ const run = async () => {
 
     const [brendon, till] = await Artist.create({
         name: 'Brendon Urie',
-        image: 'fixtures/BrendonUrie.jpg',
+        image: 'BrendonUrie.jpg',
         description: 'Бре́ндон Бойд У́ри — американский певец, автор песен и музыкант, наиболее известный как лид-вокалист группы Panic! At the Disco.'
     }, {
         name: 'Till Lindemann',
-        image: 'fixtures/TillLindemann.jpg',
+        image: 'TillLindemann.jpg',
         description: 'Тилль Ли́ндеманн — немецкий вокалист, автор текстов песен и фронтмен метал-групп Rammstein и Lindemann, поэт. Принимал участие в записи некоторых песен групп Apocalyptica, Puhdys и Emigrate. Автор сборников стихов «Messer», «In stillen Nächten», снялся в 8 фильмах. Имеет образование пиротехника.'
     });
 
@@ -41,22 +41,22 @@ const run = async () => {
         name: 'Death of a Bachelor',
         artist: brendon,
         year: 2016,
-        image: 'fixtures/DeathOfABachelor.jpg'
+        image: 'DeathOfABachelor.jpg'
     }, {
         name: 'Pray for the Wicked',
         artist: brendon,
         year: 2018,
-        image: 'fixtures/PrayForTheWicked.jpg'
+        image: 'PrayForTheWicked.jpg'
     }, {
         name: 'Sehnsucht',
         artist: till,
         year: 1997,
-        image: 'fixtures/Sehnsucht.jpg'
+        image: 'Sehnsucht.jpg'
     }, {
         name: 'XXI - Klavier',
         artist: till,
         year: 2015,
-        image: 'fixtures/Klavier.jpg'
+        image: 'Klavier.jpg'
     });
 
     await Track.create({
