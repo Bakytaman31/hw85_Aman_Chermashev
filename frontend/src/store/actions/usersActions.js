@@ -1,5 +1,8 @@
 import axiosApp from "../../axiosApp";
 import {push} from 'connected-react-router';
+import {toast} from "react-toastify";
+import {api} from "../../constants";
+import noUserImage from '../../assets/images/no_user_image.png';
 
 export const REGISTER_USER_REQUEST = 'REGISTER_USER_REQUEST';
 export const REGISTER_USER_SUCCESS = 'REGISTER_USER_SUCCESS';
@@ -43,12 +46,34 @@ export const loginUser = userData => {
         try {
             dispatch(loginUserRequest());
             const response = await axiosApp.post('/users/sessions', userData);
+            if (response.data.avatar) {
+                response.data.avatar = api + 'uploads/' + response.data.avatar;
+            }
+            else {
+                response.data.avatar = noUserImage;
+            }
             dispatch(loginUserSuccess(response.data));
             dispatch(push('/'));
+            toast.success('Welcome!');
         } catch (error) {
             dispatch(loginUserFailure(error.response.data));
+            toast.error('Oops! Something went wrong');
         }
     }
+};
+
+export const loginWithFacebook = facebookData => {
+    return async dispatch => {
+        const response = await axiosApp.post('/users/facebook', facebookData);
+        toast.success('Logged in with Facebook');
+
+        if (!response.data.avatar) {
+            response.data.avatar = noUserImage;
+        }
+
+        dispatch(loginUserSuccess(response.data));
+        dispatch(push('/'));
+    };
 };
 
 
@@ -60,5 +85,6 @@ export const logoutUser = () => {
         await axiosApp.delete('/users/sessions', {headers});
         dispatch(push('/'));
         dispatch(logoutUserSuccess());
+        toast.success('Logged out');
     }
 };

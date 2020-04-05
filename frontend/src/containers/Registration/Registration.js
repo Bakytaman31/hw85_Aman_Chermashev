@@ -7,7 +7,9 @@ import FormElement from "../../components/UI/Form/FormElement";
 class Registration extends Component {
     state = {
         username: '',
-        password: ''
+        password: '',
+        image: '',
+        displayName: ''
     };
 
     inputChangeHandler = event => {
@@ -18,7 +20,21 @@ class Registration extends Component {
 
     submitFormHandler = event => {
         event.preventDefault();
-        this.props.registerUser({...this.state});
+
+        const formData = new FormData();
+
+        Object.keys(this.state).forEach(key => {
+            let value = this.state[key];
+
+            formData.append(key, value);
+        });
+        this.props.registerUser(formData);
+    };
+
+    fileChangeHandler = event => {
+        this.setState({
+            [event.target.name]: event.target.files[0]
+        })
     };
 
     getFieldError = fieldName => {
@@ -34,6 +50,7 @@ class Registration extends Component {
             <>
                 <h2>Register new user</h2>
                 <Form onSubmit={this.submitFormHandler}>
+
                     <FormElement
                         propertyName="username"
                         title="Username"
@@ -43,6 +60,7 @@ class Registration extends Component {
                         placeholder="Enter username"
                         autoComplete="new-username"
                     />
+
                     <FormElement
                         propertyName="password"
                         title="Password"
@@ -53,6 +71,24 @@ class Registration extends Component {
                         placeholder="Enter password"
                         autoComplete="new-password"
                     />
+
+                    <FormElement
+                        propertyName="displayName"
+                        title="Display Name"
+                        value={this.state.displayName}
+                        onChange={this.inputChangeHandler}
+                        error={this.getFieldError('displayName')}
+                        placeholder="Enter Display Name"
+                        autoComplete="new-displayName"
+                    />
+
+                    <FormElement
+                        type="file"
+                        propertyName="image"
+                        title="Avatar"
+                        onChange={this.fileChangeHandler}
+                    />
+
                     <FormGroup row>
                         <Col sm={{offset: 2, size: 10}}>
                             <Button type="submit" color="primary">

@@ -20,6 +20,10 @@ const UserSchema = new Schema({
             }
         }
     },
+    displayName: {
+        type: String,
+        required: true
+    },
     password: {
         type: String,
         required: true
@@ -33,7 +37,11 @@ const UserSchema = new Schema({
         required: true,
         default: 'user',
         enum: ['user', 'admin']
-    }
+    },
+    avatar: String,
+    firstName: String,
+    lastName: String,
+    facebookId: String
 });
 
 UserSchema.methods.generateToken = function() {

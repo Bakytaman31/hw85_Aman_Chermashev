@@ -1,26 +1,12 @@
-const path = require('path');
-
 const express = require('express');
-const multer = require('multer');
-const nanoid = require('nanoid');
 const bodyParser = require('body-parser');
 
-const config = require('../config');
+const upload = require('../multer').uploads;
 const auth = require('../middleware/auth');
 const permit = require('../middleware/permit');
 
 const Artist = require('../models/Artist');
 
-const storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-        cb(null, config.uploadPath);
-    },
-    filename: (req, file, cb) => {
-        cb(null, nanoid() + path.extname(file.originalname));
-    }
-});
-
-const upload = multer({storage});
 
 const router = express.Router();
 

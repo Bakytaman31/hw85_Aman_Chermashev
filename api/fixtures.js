@@ -19,11 +19,13 @@ const run = async () => {
     await User.create({
         username: 'admin',
         password: 'admin',
+        displayName: 'Admin',
         token: nanoid(),
         role: 'admin'
     }, {
         username: 'user',
         password: 'user',
+        displayName: 'User',
         token: nanoid()
     });
 
