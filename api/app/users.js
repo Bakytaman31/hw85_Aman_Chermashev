@@ -5,7 +5,7 @@ const axios = require('axios');
 const nanoid = require('nanoid');
 
 const config = require('../config');
-const upload = require('../multer').uploads;
+const upload = require('../multer').avatar;
 const User = require('../models/User');
 
 const router = express.Router();

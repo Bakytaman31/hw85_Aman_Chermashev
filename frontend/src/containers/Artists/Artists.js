@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
 import {connect} from "react-redux";
+
 import {deleteArtist, getArtists, publishArtist} from "../../store/actions/artistsActions";
 import ArtistCard from "../../components/Cards/ArtistsCard/ArtistCard";
+import './Artists.css';
 
 class Artists extends Component {
 
@@ -11,9 +13,9 @@ class Artists extends Component {
 
     render() {
         return (
-            <div>
+            <div className="artists">
                 {this.props.artists.map(artist => (
-                    <div key={artist._id}>
+                    <div key={artist._id} className="artist">
                         {(this.props.user && this.props.user.role === 'admin') ?
                             (<ArtistCard
                                 key={artist._id}

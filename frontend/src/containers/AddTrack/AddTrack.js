@@ -9,7 +9,8 @@ class AddTrack extends Component {
     state = {
         name: '',
         album: '',
-        duration: ''
+        duration: '',
+        track: ''
     };
 
     async componentDidMount() {
@@ -22,13 +23,16 @@ class AddTrack extends Component {
 
     submitFormHandler = event => {
         event.preventDefault();
-        const obj = {
-            name: this.state.name,
-            album: this.state.album,
-            duration: this.state.duration
-        };
 
-        this.props.postTrack(obj);
+        const formData = new FormData();
+
+        Object.keys(this.state).forEach(key => {
+            let value = this.state[key];
+
+            formData.append(key, value);
+        });
+
+        this.props.postTrack(formData);
     };
 
     inputChangeHandler = event => {
@@ -36,6 +40,14 @@ class AddTrack extends Component {
             [event.target.name]: event.target.value
         });
     };
+
+    fileChangeHandler = event => {
+        this.setState({
+            [event.target.name]: event.target.files[0]
+        })
+    };
+
+
     render() {
         const albumsOptions = this.props.albums.map(album => ({title: album.name, id: album._id}));
         return (
@@ -70,6 +82,13 @@ class AddTrack extends Component {
                         title="Duration"
                         value={this.state.duration}
                         onChange={this.inputChangeHandler}
+                    />
+
+                    <FormElement
+                        type="file"
+                        propertyName="track"
+                        title="Track"
+                        onChange={this.fileChangeHandler}
                     />
 
                     <FormGroup row>

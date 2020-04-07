@@ -1,16 +1,9 @@
 import React from 'react';
-import {
-    Card, CardText, CardBody,
-    CardTitle, Button
-} from 'reactstrap';
-import MusicThumbnail from "../../MusicThumbnail/MusicThumbnail";
+import {Button, Card, CardBody, CardTitle} from 'reactstrap';
 import {Link} from "react-router-dom";
 
-const styles = {
-    width: '40%',
-    margin: '10px auto'
-};
-
+import MusicThumbnail from "../../MusicThumbnail/MusicThumbnail";
+import './ArtistCard.css';
 
 
 const ArtistCard = (props) => {
@@ -21,13 +14,14 @@ const ArtistCard = (props) => {
         </>
     );
     return (
-        <div style={styles}>
+        <div className="ArtistCard">
             <Card>
                 <MusicThumbnail image={props.image}/>
                 <CardBody>
                     <CardTitle>{props.name}</CardTitle>
-                    <CardText>{props.description}</CardText>
                     <Link to={`/albums/${props.id}`}><Button>Albums</Button></Link>
+                    <p/>
+                    <Link to={`artist/${props.id}`}><Button>More about artist</Button></Link>
                 </CardBody>
                 {props.role === 'admin' && !props.status && adminInterface}
             </Card>

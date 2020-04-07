@@ -3,6 +3,7 @@ import {
     Card, CardText, CardBody,
     CardTitle, Button
 } from 'reactstrap';
+import {api} from "../../../constants";
 
 const styles = {
     width: '40%',
@@ -19,11 +20,12 @@ const TrackCard = (props) => {
         </>
     );
     return (
-        <div style={styles} onClick={() => props.onClick(props.id)}>
+        <div style={styles}>
             <Card>
                 <CardBody>
                     <CardTitle>{props.number}. {props.name}</CardTitle>
                     <CardText>{props.duration}</CardText>
+                    <audio src={api + 'uploads/' +props.track} type="audio.mp3" controls onPlay={() => props.onClick(props.id)}>Track</audio>
                 </CardBody>
                 {props.role === 'admin' && !props.status && adminInterface}
             </Card>

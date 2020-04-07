@@ -21,7 +21,8 @@ const run = async () => {
         password: 'admin',
         displayName: 'Admin',
         token: nanoid(),
-        role: 'admin'
+        role: 'admin',
+        avatar: 'avatar/admin.jpeg'
     }, {
         username: 'user',
         password: 'user',
@@ -68,118 +69,118 @@ const run = async () => {
 
     await Track.create({
         name: 'Victorious',
-        duration: '2:59',
         published: true,
         number: 1,
-        album: death
+        album: death,
+        track: 'track/Victorious.mp3'
     }, {
         name: 'The death of a bachelor',
-        duration: '3:33',
         published: true,
         number: 2,
-        album: death
+        album: death,
+        track: 'track/TheDeathOfABachelor.mp3'
     }, {
         name: 'Hallelujah',
-        duration: '3:04',
         published: true,
         number: 3,
-        album: death
+        album: death,
+        track: 'track/Hallelujah.mp3'
     }, {
         name: 'Emperor\'s New Clothes',
-        duration: '3:39',
         published: true,
         number: 4,
-        album: death
+        album: death,
+        track: 'track/EmperorsNewClothes.mp3'
     }, {
         name: 'LA Devotee',
-        duration: '4:04',
         number: 5,
-        album: death
+        album: death,
+        track: 'track/LADevotee.mp3'
     }, {
         name: 'Say Amen (Saturday Night)',
-        duration: '5:06',
         published: true,
         number: 1,
-        album: pray
+        album: pray,
+        track: 'track/SayAmen.mp3'
     }, {
         name: 'Hey Look Ma, I Made It',
-        duration: '3:05',
         published: true,
         number: 2,
-        album: pray
+        album: pray,
+        track: 'track/HeyLookMaIMadeIt.mp3'
     }, {
         name: 'High Hopes',
-        duration: '3:16',
         published: true,
         number: 3,
-        album: pray
+        album: pray,
+        track: 'track/HighHopes.mp3'
     }, {
         name: 'Dancing\'s Not a Crime',
-        duration: '4:15',
         number: 4,
-        album: pray
+        album: pray,
+        track: 'track/DancingIsNotACrime.mp3'
     }, {
         name: 'Dying in LA',
-        duration: '3:49',
         number: 5,
-        album: pray
+        album: pray,
+        track: 'track/DyingInLA.mp3'
     }, {
         name: 'Sehnsucht',
-        duration: '4:14',
         published: true,
         number: 1,
-        album: sehnsucht
+        album: sehnsucht,
+        track: 'track/Sehnsucht.mp3'
     }, {
         name: 'Engel',
-        duration: '4:25',
         published: true,
         number: 2,
-        album: sehnsucht
+        album: sehnsucht,
+        track: 'track/Engel.mp3'
     }, {
         name: 'Du hast',
-        duration: '3:35',
         published: true,
         number: 3,
-        album: sehnsucht
+        album: sehnsucht,
+        track: 'track/DuHast.mp3'
     }, {
         name: 'Bück dich',
-        duration: '3:23',
         published: true,
         number: 4,
-        album: sehnsucht
+        album: sehnsucht,
+        track: 'track/BückDich.mp3'
     }, {
         name: 'Klavier',
-        duration: '4:50',
         published: true,
         number: 5,
-        album: sehnsucht
+        album: sehnsucht,
+        track: 'track/Klavier.mp3'
     }, {
         name: 'Sonne',
-        duration: '4:12',
         published: true,
         number: 1,
-        album: klavier
+        album: klavier,
+        track: 'track/Sonne.mp3'
     }, {
         name: 'Ohne dich',
-        duration: '5:41',
         published: true,
         number: 2,
-        album: klavier
+        album: klavier,
+        track: 'track/OhneDich.mp3'
     }, {
         name: 'Ein Lied',
-        duration: '3:47',
         number: 3,
-        album: klavier
+        album: klavier,
+        track: 'track/EinLied.mp3'
     }, {
         name: 'Roter Sand',
-        duration: '6:55',
         number: 4,
-        album: klavier
+        album: klavier,
+        track: 'track/RoterSand.mp3'
     }, {
         name: 'Mein Herz brennt',
-        duration: '5:06',
         number: 5,
-        album: klavier
+        album: klavier,
+        track: 'track/MeinHerzBrennt.mp3'
     });
 
     mongoose.connection.close();

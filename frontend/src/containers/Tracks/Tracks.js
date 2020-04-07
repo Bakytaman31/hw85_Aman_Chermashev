@@ -42,6 +42,7 @@ class Tracks extends Component {
                             status={track.published}
                             number={track.number}
                             name={track.name}
+                            track={track.track}
                             duration={track.duration}
                             role={this.props.user.role}
                             delete={this.props.deleteTrack}
@@ -53,6 +54,7 @@ class Tracks extends Component {
                                 onClick={this.props.addTrackHistory}
                                 number={track.number}
                                 name={track.name}
+                                track={track.track}
                                 duration={track.duration}
                                 role={this.props.user.role}
                             />

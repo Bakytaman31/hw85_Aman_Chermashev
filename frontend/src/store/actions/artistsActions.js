@@ -2,13 +2,22 @@ import axiosApp from '../../axiosApp'
 import {push} from 'connected-react-router';
 
 export const GET_ARTISTS_SUCCESS = 'GET_ARTISTS_SUCCESS';
+export const GET_ARTIST_SUCCESS = 'GET_ARTIST_SUCCESS';
 
 export const getArtistsSuccess = artists => ({type: GET_ARTISTS_SUCCESS, artists});
+export const getArtistSuccess = artist => ({type: GET_ARTIST_SUCCESS, artist});
 
 export const getArtists = () => {
     return async dispatch => {
         const response = await axiosApp.get('/artists');
         dispatch(getArtistsSuccess(response.data));
+    }
+};
+
+export const getArtist = id => {
+    return async dispatch => {
+        const response = await axiosApp.get(`/artists/${id}`);
+        dispatch(getArtistSuccess(response.data));
     }
 };
 

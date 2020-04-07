@@ -35,8 +35,10 @@ const createMulter = dirName => {
 
 const uploads = createMulter('uploads');
 const avatar = createMulter('avatar');
+const music = createMulter("track");
 
 module.exports = {
     uploads,
-    avatar
+    avatar,
+    music
 };

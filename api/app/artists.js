@@ -15,6 +15,11 @@ router.get('/', async (req, res) => {
     res.send(artists);
 });
 
+router.get('/:id', async (req, res) => {
+    const artist = await Artist.findById(req.params.id);
+    res.send(artist);
+});
+
 router.post('/', [bodyParser.json(), auth, upload.single('image')], async (req, res) => {
     const artistData = {
         name: req.body.name,

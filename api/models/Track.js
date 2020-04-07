@@ -12,12 +12,12 @@ const TrackSchema = new Schema({
         ref: 'Album',
         required: true
     },
-    duration: String,
     number: Number,
     published: {
         type: Boolean,
         default: false
-    }
+    },
+    track: String
 });
 
 TrackSchema.methods.publishTrack = function () {
